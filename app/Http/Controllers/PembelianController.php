@@ -24,9 +24,10 @@ class PembelianController extends Controller
         $pemasok = Pemasok::all();
         $pembelian = Pembelian::all();
         $persediaan = Persediaan::all();
+        $belimaster = BeliMaster::all();
         $nouser = "001";
         $tanggal = "INK" . date('YmdHis') . $nouser;
-        return view('admin.pembelian.index', compact('pembelian', 'pemasok', 'pembeliand', 'persediaan', 'tanggal'));
+        return view('admin.pembelian.index', compact('pembelian', 'pemasok', 'pembeliand', 'persediaan', 'tanggal', 'belimaster'));
     }
 
     /**
@@ -94,6 +95,8 @@ class PembelianController extends Controller
      */
     public function edit($id)
     {
+        $belimaster = BeliMaster::findorfail($id);
+        return view('admin.pembelian.index');
     }
 
     /**

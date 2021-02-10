@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\BeliMaster;
+use App\Pembelian;
+use App\PembelianDetail;
+use App\Pemasok;
+use App\Persediaan;
 
 class BeliMasterController extends Controller
 {
@@ -14,8 +18,11 @@ class BeliMasterController extends Controller
      */
     public function index()
     {
+        $pembelian = Pembelian::all();
+        $pembeliand = PembelianDetail::all();
         $belimaster = BeliMaster::paginate(5);
-        return view('admin.belimaster.index', compact('belimaster'));
+        $pemasok = Pemasok::all();
+        return view('admin.belimaster.index', compact('belimaster','pembelian','pembeliand','pemasok'));
     }
 
     /**
@@ -58,7 +65,13 @@ class BeliMasterController extends Controller
      */
     public function edit($id)
     {
-        //
+        $belimaster = BeliMaster::findorfail($id);
+        $pembeliand = PembelianDetail::all();
+        $pembelian = Pembelian::all();
+        $pemasok = Pemasok::all();
+        $persediaan = Persediaan::all();
+        return view('admin.pembelian.index', compact('belimaster','pembeliand','pembelian','pemasok','persediaan'));
+        
     }
 
     /**
@@ -70,7 +83,20 @@ class BeliMasterController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate( $request,[
+            'tanggal' => 'required',
+            'idpem' => 'required',
+            'ket' => 'required|min:3|max:30'
+        ]);
+
+
+        $belimaster_data = [
+            'tanggal' => $request->kode,
+            'idpem' => $request->idpem,
+            'ket' => $request->alamat,
+        ];
+
+        BeliMaster::whereId($id)->update($belimaster_data);
     }
 
     /**

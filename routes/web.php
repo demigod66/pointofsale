@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,12 +14,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Auth::routes();
+
 
 Route::get('/', function () {
-    return view('home');
+    return view('auth.login');
 });
 
-Route::resource('/pelanggan', 'PelangganController');
-Route::resource('/pemasok', 'PemasokController');
-Route::resource('/pembelian', 'PembelianController');
-Route::resource('/belimaster', 'BeliMasterController');
+Route::group(['middleware' => 'auth'], function () {
+    Route::resource('/pelanggan', 'PelangganController');
+    Route::resource('/pemasok', 'PemasokController');
+    Route::resource('/pembelian', 'PembelianController');
+    Route::resource('/belimaster', 'BeliMasterController');
+});
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

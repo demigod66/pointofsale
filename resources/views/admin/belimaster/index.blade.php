@@ -1,5 +1,5 @@
 @extends('backend.index')
-@section('sub-judul','belimaster')
+@section('sub-judul','Beli Master')
 @section('content')
 
 
@@ -16,9 +16,6 @@
       {{ Session('success') }}
   </div>
   @endif
-
-
-  <a href="{{ route('belimaster.create')}}" class="btn btn-primary btn-sm">Create</a>
 
 
                 <div class="pt-4">
@@ -45,7 +42,7 @@
                       <form action="{{ route('belimaster.destroy', $hasil->id )}}" method="POST">
                         @csrf
                         @method('delete')
-                      <a href="{{route('belimaster.edit', $hasil->id)}}" class="btn btn-primary btn-sm">CHANGE</a>
+                      <a href="{{route('pembelian.index', $hasil->id)}}" class="btn btn-primary btn-sm">CHANGE</a>
                       <button type="submit" class="btn btn-danger btn-sm">DELETE</button>
                     </td>
 

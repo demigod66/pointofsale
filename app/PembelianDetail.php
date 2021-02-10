@@ -15,5 +15,10 @@ class PembelianDetail extends Model
         return $this->belongsTo('App\Persediaan', 'persediaan_id');
     }
 
+    public function belimaster()
+    {
+        return $this->belongsTo('App\BeliMaster');
+    }
+
     use HasFactory;
 }

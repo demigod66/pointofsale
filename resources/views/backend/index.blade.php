@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="../../dist/datepicker/css/datepicker.min.css">
   <link rel="stylesheet" href="../../dist/datepicker/css/datepicker.css">
   <link rel="stylesheet" href="../../plugins/css/select2.min.css">
-  
+
 <script src="../../plugins/jquery/jquery.min.js"></script>
 </head>
 <body class="hold-transition sidebar-mini">
@@ -179,7 +179,7 @@
     </section>
     <!-- /.content -->
 
-
+  </div>
   <!-- /.content-wrapper -->
 
   @include('backend.footer')
