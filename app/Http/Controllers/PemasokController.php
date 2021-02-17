@@ -79,7 +79,6 @@ class PemasokController extends Controller
     {
         $pemasok = Pemasok::findorfail($id);
         return view('admin.pemasok.edit', compact('pemasok'));
-
     }
 
     /**

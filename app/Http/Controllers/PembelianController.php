@@ -30,11 +30,9 @@ class PembelianController extends Controller
         return view('admin.pembelian.index', compact('pembelian', 'pemasok', 'pembeliand', 'persediaan', 'tanggal', 'belimaster'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+
+
     public function create()
     {
     }
@@ -57,8 +55,8 @@ class PembelianController extends Controller
             'persediaan_id' => 'required'
         ]);
 
-
         PembelianDetail::create([
+            'nobukti' => $request->nobuk,
             'qty' => $request->qty,
             'persediaan_id' => $request->persediaan_id,
             'harga' => $request->harga,
@@ -69,6 +67,7 @@ class PembelianController extends Controller
             'tanggal' => $request->tanggal,
             'idpem' => $request->idpem,
             'ket' => $request->ket
+
         ]);
 
 
@@ -82,9 +81,11 @@ class PembelianController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($nobukti)
     {
-        //
+        $pembeliand = PembelianDetail::findorfail($nobukti);
+        $pemasok = Pemasok::all();
+        return view('admin.pembelian.print', compact('pembeliand', 'pemasok'));
     }
 
     /**
@@ -95,8 +96,6 @@ class PembelianController extends Controller
      */
     public function edit($id)
     {
-        $belimaster = BeliMaster::findorfail($id);
-        return view('admin.pembelian.index');
     }
 
     /**

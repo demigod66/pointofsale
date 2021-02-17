@@ -21,6 +21,7 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
+
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('/pelanggan', 'PelangganController');
     Route::resource('/pemasok', 'PemasokController');

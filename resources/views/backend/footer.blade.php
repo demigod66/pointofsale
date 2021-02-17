@@ -15,6 +15,14 @@
 <!-- ./wrapper -->
 
 <!-- jQuery -->
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="{{url('AdminLTE/plugins/datatables/jquery.dataTables.js') }}"></script>
+<script src="{{url('AdminLTE/plugins/datatables-bs4/js/dataTables.bootstrap4.js') }}"></script>
+<script>
+    $ ( function () {
+        $('#datatable').DataTable();
+    })
+</script>
 <script src="../../plugins/select2/js/select2.min.js"></script>
 <script src="../../datepicker/js/i18n/datepicker.en.js"></script>
 <!-- Bootstrap 4 -->

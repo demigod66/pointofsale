@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="../../dist/datepicker/css/datepicker.min.css">
   <link rel="stylesheet" href="../../dist/datepicker/css/datepicker.css">
   <link rel="stylesheet" href="../../plugins/css/select2.min.css">
+  <link rel="stylesheet" href="{{url('AdminLTE/plugins/datatables-bs4/css/dataTables.bootstrap4.css') }}">
 
 <script src="../../plugins/jquery/jquery.min.js"></script>
 </head>

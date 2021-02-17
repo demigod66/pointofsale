@@ -12,14 +12,14 @@
                         <h3 class="card-title">Input Pembelian</h3>
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('pembelian.store') }}" method="POST">
+                        <form action="{{ route('belimaster.update', $belimaster->id) }}" method="POST">
                             @csrf
-
+                            @method('PUT')
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>No Bukti</label>
-                                        <input type="text" class="form-control" name="nobuk" value="{{ $tanggal }}" readonly>
+                                        <input type="text" class="form-control" name="nobuk" value="{{ $belimaster->nobuk }}" readonly>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -32,7 +32,7 @@
                                 <label>Pemasok</label>
                                 <select class="form-control" name="idpem">
                                     @foreach($pemasok as $result)
-                                    <option value="{{ $result->id }}">{{ $result->nama }}</option>
+                                    <option value="{{ $result->id }}"{{ $result->id == $belimaster->pemasok->nama ?? '' }}>{{ $result->nama }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -42,7 +42,7 @@
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <label>Keterangan</label>
-                                        <input type="text" class="form-control" name="ket" placeholder="keterangan">
+                                        <input type="text" class="form-control" name="ket" placeholder="keterangan" value="{{ $belimaster->ket }}">
                                     </div>
                                 </div>
                             </div>
@@ -132,9 +132,7 @@
                                 <form action="{{ route('pembelian.destroy', $result->id )}}" method="POST">
                                     @csrf
                                     @method('delete')
-                                    <a href="{{ route('pembelian.show',$result->id) }}" class="btn btn-primary btn-sm">Print</a>
-                                    <a href="{{route('pembelian.edit', $result->id)}}" class="btn btn-primary btn-sm">ubah</a>
-                                    <button type="submit" class="btn btn-danger btn-sm">hapus</button>
+                                    <a href="{{route('pembelian.edit', $result->id)}}" class="btn btn-primary btn-sm"><i class="fas fa-delete"></i>ubah</a>
                               </td>
                             </tr>
                             @php
@@ -164,5 +162,11 @@
 <!-- /.content -->
 
 </div>
+
+<script>
+    $(document).ready(function() {
+    $('#example1').DataTable();
+} );
+</script>
 @include('sweetalert::alert')
 @endsection

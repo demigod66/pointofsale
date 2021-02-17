@@ -42,7 +42,7 @@
                       <form action="{{ route('belimaster.destroy', $hasil->id )}}" method="POST">
                         @csrf
                         @method('delete')
-                      <a href="{{route('pembelian.index', $hasil->id)}}" class="btn btn-primary btn-sm">CHANGE</a>
+                      <a href="{{route('belimaster.edit', $hasil->id)}}" class="btn btn-primary btn-sm">CHANGE</a>
                       <button type="submit" class="btn btn-danger btn-sm">DELETE</button>
                     </td>
 
@@ -57,5 +57,9 @@
 
 
 
-
+        <script>
+            $(document).ready(function() {
+            $('#pt-4').DataTable();
+        } );
+        </script>
 @endsection
