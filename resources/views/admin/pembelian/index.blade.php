@@ -123,7 +123,7 @@
                                   $total = $result->qty * $result->harga;
                               @endphp
                               <tr>
-                              <td>{{ $result->id }}</td>
+                              <td>{{ $loop->iteration }}</td>
                               <td>{{ $result->persediaan->namastok}}</td>
                               <td>{{ $result->qty }}</td>
                               <td>@currency($result->harga)</td>
@@ -133,8 +133,7 @@
                                     @csrf
                                     @method('delete')
                                     <a href="{{ route('pembelian.show',$result->id) }}" class="btn btn-primary btn-sm">Print</a>
-                                    <a href="{{route('pembelian.edit', $result->id)}}" class="btn btn-primary btn-sm">ubah</a>
-                                    <button type="submit" class="btn btn-danger btn-sm">hapus</button>
+                                    <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
                               </td>
                             </tr>
                             @php

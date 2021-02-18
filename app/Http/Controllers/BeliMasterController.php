@@ -20,7 +20,7 @@ class BeliMasterController extends Controller
     {
         $pembelian = Pembelian::all();
         $pembeliand = PembelianDetail::all();
-        $belimaster = BeliMaster::paginate(5);
+        $belimaster = BeliMaster::all();
         $pemasok = Pemasok::all();
         return view('admin.belimaster.index', compact('belimaster', 'pembelian', 'pembeliand', 'pemasok'));
     }
@@ -83,6 +83,7 @@ class BeliMasterController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
+            'nobuk' => 'required',
             'tanggal' => 'required',
             'idpem' => 'required',
             'ket' => 'required|min:3|max:30'
@@ -90,6 +91,7 @@ class BeliMasterController extends Controller
 
 
         $belimaster_data = [
+            'nobuk' => $request->nobuk,
             'tanggal' => $request->kode,
             'idpem' => $request->idpem,
             'ket' => $request->ket,
@@ -107,6 +109,5 @@ class BeliMasterController extends Controller
      */
     public function destroy($id)
     {
-        //
     }
 }

@@ -33,7 +33,7 @@
                   <tbody>
                     @foreach( $belimaster as $result => $hasil)
                   <tr>
-                    <td>{{ $result + $belimaster->firstitem()}}</td>
+                    <td>{{ $loop->iteration }}</td>
                     <td>{{$hasil->nobuk}}</td>
                     <td>{{$hasil->tanggal}}</td>
                     <td>{{$hasil->pemasok->nama}}</td>
@@ -50,7 +50,6 @@
                   </tbody>
                   @endforeach
                 </table>
-                {{ $belimaster->links() }}
           </div>
         </div>
 

@@ -12,9 +12,8 @@
                         <h3 class="card-title">Input Pembelian</h3>
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('belimaster.update', $belimaster->id) }}" method="POST">
+                        <form action="{{ route('pembelian.store') }}" method="POST">
                             @csrf
-                            @method('PUT')
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
